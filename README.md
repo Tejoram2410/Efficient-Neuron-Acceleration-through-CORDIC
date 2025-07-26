@@ -4,7 +4,7 @@
 
 This repository presents a hardware-efficient implementation of arithmetic operations using the CORDIC (COordinate Rotation DIgital Computer) algorithm. These modules aim to serve as foundational components in building custom neural network accelerators with reduced hardware complexity — eliminating the need for multipliers and dividers.
 
-All implementations are done using **pure combinational logic in Verilog**, without pipelining or fixed-point scaling, making this a clean baseline for further hardware optimization.
+All implementations are done using **pure combinational logic in Verilog**, making this a clean baseline for further hardware optimization.
 
 ---
 
