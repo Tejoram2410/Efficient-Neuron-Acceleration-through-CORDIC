@@ -2,37 +2,37 @@
 
 ## Overview
 
-This repository presents a hardware-efficient implementation of arithmetic operations using the CORDIC (COordinate Rotation DIgital Computer) algorithm. These modules aim to serve as foundational components in building custom neural network accelerators with reduced hardware complexity — eliminating the need for multipliers and dividers.
+This repository contains Verilog implementations of arithmetic operations using the CORDIC (COordinate Rotation DIgital Computer) algorithm. All operations are implemented using a Finite State Machine (FSM)-based iterative approach.
 
-All implementations are done using **pure combinational logic in Verilog**, making this a clean baseline for further hardware optimization.
+The modules include multiplication, division, and hyperbolic functions computed through shift-add operations, without using hardware multipliers or dividers.
 
 ---
 
 ## Implemented Modules
 
-✔️ **CORDIC-Based Multiplication**  
-✔️ **CORDIC-Based Division**  
-✔️ **CORDIC-Based Hyperbolic Functions** (`tanh`, `sinh`, etc.)
+### 1. CORDIC Multiplier
+- Performs multiplication using iterative CORDIC logic.
+- Uses only shifts and additions.
+- No use of `*` operator.
 
-Each module is tested using Verilog testbenches to validate correctness and convergence.
+### 2. CORDIC Divider
+- Computes division through a CORDIC-based iterative method.
+- No use of `/` operator.
+
+### 3. CORDIC Hyperbolic Function Generator
+- Generates hyperbolic functions like:
+  - `tanh`
+  - `sinh`
+  - `cosh`
+- Based on the hyperbolic mode of the CORDIC algorithm.
 
 ---
 
-## Why CORDIC?
+## Design Characteristics
 
-CORDIC replaces complex arithmetic operations with only:
-- Shifts
-- Additions/Subtractions
-- Precomputed lookup values
-
-This is ideal for hardware implementations where:
-- Multipliers/dividers are expensive or unavailable
-- Area and power efficiency are critical
-- Simpler control logic is preferred
-
-These benefits are highly relevant in applications such as:
-- Edge AI hardware
-- DSP and ANN co-processors
-- ASIC/FPGA-based AI accelerators
+- RTL is written in Verilog.
+- Each operation is implemented using an FSM.
+- The number of clock cycles depends on the iteration count.
+- No pipelining or fixed-point scaling has been applied.
 
 ---
