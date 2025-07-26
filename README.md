@@ -42,3 +42,6 @@ The modules cover multiplication, division, and hyperbolic functions (`tanh`, `s
 - **Computation Type:** Integer-only, shift-add based, no floating point or fixed-point.
 
 ---
+
+
+
