@@ -1,4 +1,4 @@
-# CORDIC-Based Arithmetic Modules for Neural Network Acceleration
+# Efficient-Neuron-Acceleration-through-CORDIC
 
 ## Overview
 
