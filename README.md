@@ -2,42 +2,43 @@
 
 ## Overview
 
-This repository contains Verilog implementations of arithmetic operations using the CORDIC (COordinate Rotation DIgital Computer) algorithm. All modules are built around **Finite State Machines (FSMs)** to carry out iterative computation across clock cycles.
+This repository contains Verilog implementations of arithmetic operations using the **CORDIC (COordinate Rotation DIgital Computer)** algorithm. All operations are performed using an **FSM (Finite State Machine)-based iterative structure**. The system works with **8-bit binary numbers** and executes **8 iterations per operation**.
 
-The CORDIC algorithm is used here to perform basic arithmetic operations like multiplication, division, and evaluation of hyperbolic functions. These modules are written in RTL-level Verilog and are intended to demonstrate how complex functions can be computed using only basic shift and add operations.
+The modules cover multiplication, division, and hyperbolic functions (`tanh`, `sinh`, etc.), all implemented without using hardware multipliers, dividers, or floating-point units.
 
 ---
 
-## Implemented Modules
+## Supported Operations
 
-### 1. CORDIC Multiplier
+### ✅ CORDIC-Based Multiplier
+- Performs multiplication using iterative shift-add operations.
+- Accepts two 8-bit inputs.
+- Executes over 8 FSM-controlled cycles.
+- No use of the `*` operator.
 
-- Performs multiplication between two input values using iterative shift and add operations.
-- The design avoids use of the `*` operator or built-in multiplier hardware.
-- Internally structured as a sequential FSM with defined states for each computation stage.
+### ✅ CORDIC-Based Divider
+- Computes division using the CORDIC iterative method.
+- Takes two 8-bit inputs (dividend and divisor).
+- Operates over 8 FSM-driven iterations.
+- No `/` operator used.
 
-### 2. CORDIC Divider
-
-- Computes the division of two inputs using a similar iterative FSM-based approach.
-- Does not use the `/` operator.
-- Ensures step-by-step convergence toward the correct quotient using the CORDIC division method.
-
-### 3. CORDIC Hyperbolic Function Unit
-
-- Computes hyperbolic functions such as:
+### ✅ CORDIC-Based Hyperbolic Function Module
+- Computes hyperbolic functions:
   - `tanh(x)`
   - `sinh(x)`
   - `cosh(x)`
-- Uses the hyperbolic mode of the CORDIC algorithm.
-- Operates over several cycles, transitioning through FSM states to reach final output values.
+- Operates in **hyperbolic mode** of CORDIC.
+- Also runs over 8 FSM-controlled steps.
+- Designed for 8-bit input width.
 
 ---
 
 ## Design Details
 
-- Each module is fully described in Verilog and simulates sequential behavior.
-- FSMs handle control flow and sequencing of operations.
-- Inputs are accepted as binary values, and intermediate values are updated over successive clock cycles.
-- Output is generated after the FSM completes a fixed number of iterations.
+- **Bit Width:** 8-bit input and output.
+- **Iterations:** Each module performs 8 iterations.
+- **Control Flow:** All operations are handled using a clearly defined FSM.
+- **RTL Language:** Verilog.
+- **Computation Type:** Integer-only, shift-add based, no floating point or fixed-point.
 
 ---
