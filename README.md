@@ -2,46 +2,55 @@
 
 ## Overview
 
-This repository contains Verilog implementations of arithmetic operations using the **CORDIC (COordinate Rotation DIgital Computer)** algorithm. All operations are performed using an **FSM (Finite State Machine)-based iterative structure**. The system works with **8-bit binary numbers** and executes **8 iterations per operation**.
+This repository contains Verilog implementations of arithmetic operations using the **CORDIC (COordinate Rotation DIgital Computer)** algorithm. All operations are implemented using an **FSM (Finite State Machine)-based** approach with **8-bit inputs** and a fixed number of **8 iterations** per operation.
 
-The modules cover multiplication, division, and hyperbolic functions (`tanh`, `sinh`, etc.), all implemented without using hardware multipliers, dividers, or floating-point units.
+The modules include:
+- CORDIC-based multiplier
+- CORDIC-based divider
+- Hyperbolic function generator
+- MAC (Multiply-Accumulate) unit built using the CORDIC multiplier and an adder
 
 ---
 
-## Supported Operations
+## Modules
 
-### ✅ CORDIC-Based Multiplier
-- Performs multiplication using iterative shift-add operations.
-- Accepts two 8-bit inputs.
-- Executes over 8 FSM-controlled cycles.
-- No use of the `*` operator.
+### 1. CORDIC-Based Multiplier
+- Performs multiplication using shift and add operations.
+- Operates on 8-bit inputs.
+- Completed in 8 FSM-driven iterations.
+- Multiplier logic avoids the use of `*`.
 
-### ✅ CORDIC-Based Divider
-- Computes division using the CORDIC iterative method.
-- Takes two 8-bit inputs (dividend and divisor).
-- Operates over 8 FSM-driven iterations.
-- No `/` operator used.
+### 2. CORDIC-Based Divider
+- Computes division using CORDIC-style iterative subtraction and shifting.
+- Takes 8-bit dividend and divisor.
+- Fully sequential with 8-state FSM.
+- No use of `/` operator.
 
-### ✅ CORDIC-Based Hyperbolic Function Module
-- Computes hyperbolic functions:
+### 3. CORDIC-Based Hyperbolic Function Unit
+- Computes:
   - `tanh(x)`
   - `sinh(x)`
   - `cosh(x)`
-- Operates in **hyperbolic mode** of CORDIC.
-- Also runs over 8 FSM-controlled steps.
-- Designed for 8-bit input width.
+- Uses the hyperbolic mode of the CORDIC algorithm.
+- Runs for 8 iterations.
+- Works with 8-bit binary input values.
+
+### 4. MAC (Multiply-Accumulate) Unit
+- Built using the CORDIC multiplier and an 8-bit adder.
+- Accepts three 8-bit inputs:
+  - Input A and B are multiplied using the CORDIC multiplier.
+  - Result is added to a third input C using a separate adder module.
+- Fully sequential and uses the same FSM-controlled structure.
+- Useful as a fundamental building block for neural network layers or DSP operations.
 
 ---
 
 ## Design Details
 
-- **Bit Width:** 8-bit input and output.
-- **Iterations:** Each module performs 8 iterations.
-- **Control Flow:** All operations are handled using a clearly defined FSM.
-- **RTL Language:** Verilog.
-- **Computation Type:** Integer-only, shift-add based, no floating point or fixed-point.
+- **Bit Width:** 8-bit inputs and outputs.
+- **Iteration Count:** 8 for each operation.
+- **Architecture:** FSM-based sequential logic.
+- **Arithmetic Base:** Shift-add method; no hardware multipliers or dividers.
+- **Language:** Verilog (synthesizable).
 
 ---
-
-
-
