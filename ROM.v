@@ -26,14 +26,14 @@ module r(input wire clk,
 reg [7:0] rom [0:7];
 initial
 begin
-rom[0] = 8'd70;  // atan(2^0) ≈ 45°
-rom[1] = 8'd32;  // atan(2^-1) ≈ 26.565°
-rom[2] = 8'd16;  // atan(2^-2) ≈ 14.036°
-rom[3] = 8'd8;   // atan(2^-3) ≈ 7.125°
-rom[4] = 8'd4;   // atan(2^-4) ≈ 3.576°
-rom[5] = 8'd2;   // atan(2^-5) ≈ 1.790°
-rom[6] = 8'd1;   // atan(2^-6) ≈ 0.895°
-rom[7] = 8'd1;   // atan(2^-7) ≈ 0.448°
+rom[0] = 8'd70;  
+rom[1] = 8'd32;  
+rom[2] = 8'd16;  
+rom[3] = 8'd8;   
+rom[4] = 8'd4;   
+rom[5] = 8'd2;   
+rom[6] = 8'd1;   
+rom[7] = 8'd1;   
 end
 
 always @(*)
