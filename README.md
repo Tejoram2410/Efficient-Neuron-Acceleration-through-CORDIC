@@ -1,3 +1,5 @@
+#Efficient-Neuron-Acceleration-through-CORDIC
+
 ## Overview
 
 This repository presents a hardware-efficient implementation of arithmetic operations using the CORDIC (COordinate Rotation DIgital Computer) algorithm. These modules aim to serve as foundational components in building custom neural network accelerators with reduced hardware complexity — eliminating the need for multipliers and dividers.
