@@ -1,4 +1,4 @@
-#Efficient-Neuron-Acceleration-through-CORDIC
+# CORDIC-Based Arithmetic Modules for Neural Network Acceleration
 
 ## Overview
 
@@ -36,4 +36,3 @@ These benefits are highly relevant in applications such as:
 - ASIC/FPGA-based AI accelerators
 
 ---
-
