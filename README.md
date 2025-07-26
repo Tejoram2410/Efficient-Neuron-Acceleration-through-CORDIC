@@ -54,3 +54,26 @@ The modules include:
 - **Language:** Verilog (synthesizable).
 
 ---
+
+## Future Work: RECON Integration
+
+As a next step, this project aims to extend toward a full **neuron architecture** by integrating the CORDIC-based modules into a **unified compute engine** called **RECON** (Resource-Efficient CORDIC-Based Neuron). This design, inspired by [RECON (OJCAS 2021)](https://doi.org/10.1109/OJCAS.2020.3042743), allows a single iterative block to perform both:
+
+- **Multiply-Accumulate (MAC)** operations using linear CORDIC mode
+- **Non-linear Activation Functions** (`sigmoid`, `tanh`) using hyperbolic mode
+
+### Goals for RECON Integration
+• Merge multiplier and hyperbolic modules into a **shared CORDIC datapath**  
+• Add FSM enhancements to dynamically switch between MAC and AF modes  
+• Introduce **control signals** like `select_mode` and `select_af` for configurability  
+• Optimize for **8-bit signed fixed-point precision** (e.g., `<8,5>` format)  
+• Explore **power gating techniques** for static power reduction  
+• Complete a full neuron cycle (MAC → AF) in a compact iterative loop  
+
+### Why RECON?
+- Enables a **single hardware block** to perform the full neuron operation
+- Reduces logic duplication and area/power overhead
+- Ideal for **ASICs**, **FPGAs**, and **low-power AI edge devices**
+- Proven gains: up to **60% reduction in ALP (Area × Latency × Power)** vs traditional designs
+
+
